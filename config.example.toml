@@ -1,0 +1,80 @@
+# Canviz Configuration Example
+# Copy this to ~/.config/canviz/config.toml
+#
+# Find your monitor names with:
+#   hyprctl monitors
+#   wlr-randr
+
+# ============================================
+# Global Defaults
+# ============================================
+# These apply to all monitors unless overridden
+
+[default]
+transition = "fade"       # fade, slide_left, slide_right, slide_up, slide_down, wipe, none
+transition_time = 300     # milliseconds
+mode = "cover"            # cover, contain, fill, tile, center
+
+
+# ============================================
+# Per-Monitor Configuration
+# ============================================
+# Replace monitor names with your actual outputs
+
+# Laptop display - single wallpaper
+[monitors.eDP-1]
+path = "~/Pictures/wallpaper.jpg"
+
+# External monitor - slideshow
+[monitors.DP-1]
+path = "~/Pictures/Wallpapers"     # Directory of images
+duration = "30m"                    # Change every 30 minutes
+sorting = "random"                  # random, ascending, descending
+recursive = true                    # Include subdirectories
+transition = "slide_left"           # Override default transition
+transition_time = 500
+
+# Second external monitor
+[monitors.HDMI-A-1]
+path = "~/Pictures/portrait.jpg"
+mode = "contain"                    # Letterbox if aspect ratio differs
+
+
+# ============================================
+# Per-Workspace Wallpapers (Coming Soon)
+# ============================================
+# [workspaces]
+# enabled = true
+# 1 = "~/Pictures/workspace1.jpg"
+# 2 = "~/Pictures/workspace2.jpg"
+# 3 = "~/Pictures/workspace3.jpg"
+
+
+# ============================================
+# Quick Reference
+# ============================================
+#
+# Transitions:
+#   fade        - Crossfade between images (default)
+#   slide_left  - New image slides in from right
+#   slide_right - New image slides in from left
+#   slide_up    - New image slides in from bottom
+#   slide_down  - New image slides in from top
+#   wipe        - Wipe transition
+#   none        - Instant switch
+#
+# Scaling Modes:
+#   cover   - Fill screen, crop if needed (default)
+#   contain - Fit inside screen, letterbox if needed
+#   fill    - Stretch to fill (may distort)
+#   tile    - Repeat image as tiles
+#   center  - Center without scaling
+#
+# Duration Formats:
+#   30s     - 30 seconds
+#   5m      - 5 minutes
+#   1h      - 1 hour
+#   1h30m   - 1 hour 30 minutes
+#
+# Supported Formats:
+#   JPEG, PNG, WebP, BMP, GIF (static)
